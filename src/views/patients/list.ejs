@@ -1,0 +1,21 @@
+<%- include('../layouts/main') %>
+<div>
+    <h1 class="test-2x1 mb-4">Patients</h1>
+    <a href="/patients/add" class="inline-block mb-4 bg-blue-600 text-white px-4 py-2 rounded">Add Patient</a>
+    <table class="w-full bg-white rounded shadow">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="p-2">Name</th><th class="p-2">Phone</th><th class="p-2">created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% patients.forEach(p => { %>
+                <tr class="border-t">
+                    <td class="p-2"><%= p.firstName%> <%= p.lastName %></td>
+                    <td class="p-2"><%= p.phone %></td>
+                    <td class="p-2"><%= new Date(p.createdAt).tolocalDateString() %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

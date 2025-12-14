@@ -1,0 +1,9 @@
+<%- include('../layouts/main') %>
+<h1 class="text-2x1 mb-4">Add Patient</h1>
+<form action="/patients/add" method="post" class="space-y-3 max-w-md">
+    <input name="firstName" placeholder="First Name" class="w-full border p-2" required>
+    <input name="lastName" placeholder="Last Name" class="w-full border p-2">
+    <input name="phone" placeholder="Phone" class="w-full border p-2">
+    <textarea name="address" placeholder="Address" class="w-full border p-2"></textarea>
+    <button class="bg-green-600 text-white px-4 rounded">Create</button>
+</form>
