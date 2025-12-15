@@ -1,0 +1,28 @@
+<%- include('../layouts/main') %>
+<h1 class="text-2x1 mb-4">Add Appointment</h1>
+<form action="/appointments/add" method="post" class="space-y-3 max-w-md">
+  <label>Patient</label>
+  <select name="patirnt" class="w-full border p-2" required>
+    <% patients.forEach(p => { %>
+    <option value="<%= p._id %>"><%= p.firstName %> <%= p.lastName></option>
+    <% }) %>
+  </select>
+
+  <label>Doctor</label>
+  <select name="doctor" class="w-full border p-2" required>
+    <% doctors.forEach(d => {
+    <option value="<%= d._id %>">
+      <%= d.name %> - <%= d.specialization %>
+    </option>
+    <% }) %>
+  </select>
+
+  <label>Date & time</label>
+  <input type="datetime-local" name="date" class="w-full border p-2" required />
+  <textarea
+    name="reason"
+    placeholder="Reason"
+    class="w-full border p-2"
+  ></textarea>
+  <button class="bg-green-600 text-white px-4 py-2 rounded">Create</button>
+</form>
