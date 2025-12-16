@@ -6,11 +6,17 @@
 .mx-auto {
   margin-inline: auto;
 }
+.flex {
+  display: flex;
+}
 .grid {
   display: grid;
 }
 .inline-block {
   display: inline-block;
+}
+.min-h-screen {
+  min-height: 100vh;
 }
 .w-full {
   width: 100%;
