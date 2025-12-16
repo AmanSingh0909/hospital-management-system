@@ -3,7 +3,7 @@ const Patient = require("../models/Patient")
 // get list of all patients
 const getAlllistPatientsController = async (req, res) => {
     try {
-        const patients = await Patient.find()
+        const patients = await Patient.find().sort({ createdAt: -1 }).limit(200);
         res.render('patients/list', { patients })
     } catch (error) {
         console.log('Error fetching patients:', error)
