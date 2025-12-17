@@ -19,11 +19,11 @@ const getShowAddForm = async (req, res) => {
 // post add new patient
 const createAddPatient = async (req, res) => {
     try {
-        await Patient.create(req.body)
-        res.redirect('/patients')
+        await Patient.create(req.body);
+        res.redirect('/patients');
     } catch (error) {
-        console.log("Error adding patient", error.message);
-        res.status(400).send("Invalid Patient Data")
+        console.log("Error adding patient:", error);
+        res.status(400).send("Invalid Patient Data");
     }
 }
 
