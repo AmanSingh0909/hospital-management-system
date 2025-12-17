@@ -1,22 +1,49 @@
-<%- include('../layouts/main') %>
 <div>
-    <h1 class="text-2x1 mb-4">Appointments</h1>
-    <a href="/appointments/add" class="inline-block mb-4 bg-blue-600 text-white px-4 py-4 rounded">Add Appointment</a>
-    <table class="w-full bg-white rounded shadow">
-        <thead class="bg-gray-50">
+    <h1 class="text-2xl font-semibold mb-4">Appointments</h1>
+
+    <a href="/appointments/add"
+       class="inline-block mb-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Add Appointment
+    </a>
+
+    <table class="w-full bg-white rounded shadow overflow-hidden">
+        <thead class="bg-gray-100">
             <tr>
-                <th class="p-2">Date</th><th class="p-2">Patient</th><th class="p-2">Doctor</th><th class="p-2">Status</th>
+                <th class="p-2 text-left">Date</th>
+                <th class="p-2 text-left">Patient</th>
+                <th class="p-2 text-left">Doctor</th>
+                <th class="p-2 text-left">Status</th>
             </tr>
         </thead>
+
         <tbody>
             <% appointments.forEach(a => { %>
-                <tr class="border-t">
-                    <td class="p-2"><%= new Date(a.date).toLocalString() %></td>
-                    <td class="p-2"><%= a.patient ? (a.patient.firstName + '' + (a.patient.lastName || '')) : a.patient %></td>
-                    <td class="p-2"><%= a.doctor ? a.doctor.name : a.doctor %></td>
-                    <td class="p-2"><%= a.status %></td>
+                <tr class="border-t hover:bg-gray-50">
+                    
+                    <td class="p-2">
+                        <%= new Date(a.date).toLocaleString() %>
+                    </td>
+
+                    <td class="p-2">
+                        <% if (a.patient) { %>
+                            <%= a.patient.firstName %> <%= a.patient.lastName || '' %>
+                        <% } else { %>
+                            Unknown Patient
+                        <% } %>
+                    </td>
+
+                    <td class="p-2">
+                        <%= a.doctor ? a.doctor.name : 'Unknown Doctor' %>
+                    </td>
+
+                    <td class="p-2">
+                        <span class="px-2 py-1 rounded bg-green-100 text-green-700">
+                            <%= a.status %>
+                        </span>
+                    </td>
+
                 </tr>
             <% }) %>
         </tbody>
     </table>
-</div> 
+</div>

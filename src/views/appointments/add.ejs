@@ -1,28 +1,55 @@
-<%- include('../layouts/main') %>
-<h1 class="text-2x1 mb-4">Add Appointment</h1>
-<form action="/appointments/add" method="post" class="space-y-3 max-w-md">
-  <label>Patient</label>
-  <select name="patirnt" class="w-full border p-2" required>
-    <% patients.forEach(p => { %>
-    <option value="<%= p._id %>"><%= p.firstName %> <%= p.lastName></option>
-    <% }) %>
-  </select>
+<h1 class="text-2xl font-semibold mb-4">Add Appointment</h1>
 
-  <label>Doctor</label>
-  <select name="doctor" class="w-full border p-2" required>
-    <% doctors.forEach(d => {
-    <option value="<%= d._id %>">
-      <%= d.name %> - <%= d.specialization %>
-    </option>
-    <% }) %>
-  </select>
+<form
+  action="/appointments/add"
+  method="POST"
+  class="space-y-4 max-w-md bg-white p-6 rounded shadow"
+>
+  <!-- Patient -->
+  <div>
+    <label class="block font-medium mb-1">Patient</label>
+    <select name="patient" class="w-full border p-2 rounded" required>
+      <% patients.forEach(p => { %>
+      <option value="<%= p._id %>"><%= p.firstName %> <%= p.lastName %></option>
+      <% }) %>
+    </select>
+  </div>
 
-  <label>Date & time</label>
-  <input type="datetime-local" name="date" class="w-full border p-2" required />
-  <textarea
-    name="reason"
-    placeholder="Reason"
-    class="w-full border p-2"
-  ></textarea>
-  <button class="bg-green-600 text-white px-4 py-2 rounded">Create</button>
+  <!-- Doctor -->
+  <div>
+    <label class="block font-medium mb-1">Doctor</label>
+    <select name="doctor" class="w-full border p-2 rounded" required>
+      <% doctors.forEach(d => { %>
+      <option value="<%= d._id %>">
+        <%= d.name %> - <%= d.specialization %>
+      </option>
+      <% }) %>
+    </select>
+  </div>
+
+  <!-- Date & Time -->
+  <div>
+    <label class="block font-medium mb-1">Date & Time</label>
+    <input
+      type="datetime-local"
+      name="date"
+      class="w-full border p-2 rounded"
+      required
+    />
+  </div>
+
+  <!-- Reason -->
+  <div>
+    <label class="block font-medium mb-1">Reason</label>
+    <textarea
+      name="reason"
+      placeholder="Reason"
+      class="w-full border p-2 rounded"
+    ></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+    Create Appointment
+  </button>
 </form>
