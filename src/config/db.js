@@ -1,25 +1,17 @@
-const { MongoClient } = require('mongodb')
-const dotenv = require ("dotenv")
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-dotenv.config()
-
-const url = process.env.MONGO_URL
-const dbName = process.env.DB_NAME
-
-const client = new MongoClient(url)
-let db
 const connectDB = async () => {
-    try {
-        if (!db) {
-            await client.connect()
-            db = client.db(dbName)
-            console.log(`Connected to MongoDB: ${dbName}`);
-        }
-        return db
-    } catch (error) {
-        console.log("MongoDB Connection Error:", error.message);
-        process.exit(1)
-    }
-}
+  try {
+    await mongoose.connect(process.env.MONGO_URL, {
+      dbName: process.env.DB_NAME
+    });
 
-module.exports = connectDB
+    console.log("Connected to MongoDB:", mongoose.connection.name);
+  } catch (error) {
+    console.error("MongoDB Connection Error:", error.message);
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;
