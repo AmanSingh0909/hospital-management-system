@@ -3,8 +3,11 @@ const morgan = require('morgan')
 const dotenv = require('dotenv')
 const connectDB  = require('./config/db')
 const path = require('path');
-const patientRoutes = require('./routes/patientsRoutes')
 const methodOverride = require('method-override');
+
+const patientRoutes = require('./routes/patientsRoutes')
+const doctorRoutes = require('./routes/doctorRoutes')
+const appointmentRoutes = require('./routes/appointmentRoutes')
 
 const expressLayouts = require('express-ejs-layouts');
 
@@ -32,6 +35,10 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Routes
+app.use('/patients', patientRoutes);
+app.use('/doctors', doctorRoutes)
+app.use('/appointments', appointmentRoutes)
 
 app.get('/', (req, res) => res.render('dashboard'));
 
@@ -39,9 +46,8 @@ app.get('/', (req, res) => res.render('dashboard'));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 
-// Routes
-app.use('/patients', patientRoutes);
+
 
 app.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`);
+    console.log(`Worker ${process.pid} running on ${PORT}`);
 })
