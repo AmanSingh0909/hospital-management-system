@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const patientSchema = new mongoose.Schema({
-    firtName : {
+    firstName : {
         type: String,
         required:true
     },
