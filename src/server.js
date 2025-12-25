@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 const patientRoutes = require('./routes/patientsRoutes')
 const doctorRoutes = require('./routes/doctorRoutes')
 const appointmentRoutes = require('./routes/appointmentRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 const expressLayouts = require('express-ejs-layouts');
 
@@ -39,6 +40,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes)
 app.use('/appointments', appointmentRoutes)
+app.use('/auth', authRoutes)
 
 app.get('/', (req, res) => res.render('dashboard'));
 
