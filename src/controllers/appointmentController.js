@@ -28,7 +28,6 @@ const getShowAddFormOfAppointment = async (req, res) => {
         res.render('appointments/add', { patients, doctors })
     } catch (error) {
         console.log("Error loading form:", error);
-
     }
 }
 
