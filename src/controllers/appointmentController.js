@@ -20,7 +20,6 @@ const getListOfAppointment = async (req, res) => {
     }
 };
 
-
 const getShowAddFormOfAppointment = async (req, res) => {
     try {
         const patients = await Patient.find()
