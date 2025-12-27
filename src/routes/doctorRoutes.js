@@ -1,4 +1,6 @@
-const express = require ('express')
+const express = require('express')
+const auth = require('../middleware/authMiddleware')
+const admin = require('../middleware/adminMiddleware')
 const { getListDoctors, getShowAddForm, createAddDoctor } = require('../controllers/doctorController')
 const router = express.Router()
 
@@ -9,6 +11,6 @@ router.get('/', getListDoctors)
 router.get('/add', getShowAddForm)
 
 // POST: Add doctor
-router.post('/add', createAddDoctor)
+router.post('/add', auth, admin, createAddDoctor)
 
 module.exports = router;
