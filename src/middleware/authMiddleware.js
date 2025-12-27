@@ -1,4 +1,4 @@
-const express = require('express')
+const jwt = require('jsonwebtoken')
 
 const authMiddleware = (req, res, next) => {
     try {
@@ -16,7 +16,7 @@ const authMiddleware = (req, res, next) => {
         req.user = decoded
 
         next()
-        
+
     } catch (error) {
         console.log('Auth Middleware Error:', error.message);
         res.status(401).json({
