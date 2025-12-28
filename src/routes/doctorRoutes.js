@@ -1,5 +1,5 @@
 const express = require('express')
-const auth = require('../middleware/authMiddleware')
+const auth = require('../middleware/authCookiesMiddleware')
 const admin = require('../middleware/adminMiddleware')
 const { getListDoctors, getShowAddForm, createAddDoctor } = require('../controllers/doctorController')
 const router = express.Router()
