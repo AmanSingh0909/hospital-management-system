@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hospital Management</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body class="bg-gray-100 min-h-screen">
     <nav class="bg-white shadow p-4">
@@ -14,10 +14,28 @@
         <a href="/doctors/add">Doctors</a>
         <a href="/appointments">Appointments</a>
       </div>
-    </nav>
+      <!-- Right side -->
+      <div class="flex items-center gap-3">
+        <% if (!user) { %>
+        <a href="/auth/login" class="bg-blue-600 text-white px-4 py-2 rounded">
+          Login
+        </a>
 
-    <main class="container mx-auto p-6">
-        <%- body %>
-    </main>
+        <a
+          href="/auth/register"
+          class="bg-green-600 text-white px-4 py-2 rounded"
+        >
+          Register
+        </a>
+        <% } else { %>
+        <span class="text-gray-700"> Welcome </span>
+
+        <a href="/auth/logout" class="bg-red-600 text-white px-4 py-2 rounded">
+          Logout
+        </a>
+        <% } %>
+      </div>
+    </nav>
+    <main class="container mx-auto p-6"><%- body %></main>
   </body>
 </html>
