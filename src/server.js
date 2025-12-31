@@ -4,11 +4,13 @@ const dotenv = require('dotenv')
 const connectDB  = require('./config/db')
 const path = require('path');
 const methodOverride = require('method-override');
+const cookieParser = require('cookie-parser')
 
 const patientRoutes = require('./routes/patientsRoutes')
 const doctorRoutes = require('./routes/doctorRoutes')
 const appointmentRoutes = require('./routes/appointmentRoutes')
 const authRoutes = require('./routes/authRoutes')
+const doctorApiRoutes = require('./routes/api/doctorApiRoutes')
 
 const expressLayouts = require('express-ejs-layouts');
 
@@ -31,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'))
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(cookieParser())
 
 // Views setup
 app.set('view engine', 'ejs');
@@ -41,6 +44,7 @@ app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes)
 app.use('/appointments', appointmentRoutes)
 app.use('/auth', authRoutes)
+app.use('/api/doctors', doctorApiRoutes)
 
 app.get('/', (req, res) => res.render('dashboard'));
 
