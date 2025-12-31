@@ -29,8 +29,8 @@ const registerUserController = async (req, res) => {
 
         res.redirect('/auth/login')
     } catch (error) {
-        console.log('Register Error', error.message);
-        res.render('auth/register', { error: 'Registration failed' })
+        console.log('Register Error', error);
+        res.render('auth/register', { error: error.message || 'Registration failed' })
     }
 }
 
