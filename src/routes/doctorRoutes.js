@@ -5,7 +5,7 @@ const { getListDoctors, getShowAddForm, createAddDoctor } = require('../controll
 const router = express.Router()
 
 // GET: List doctors
-router.get('/', getListDoctors)
+router.get('/',auth, getListDoctors)
 
 // GET: Show add doctor form
 router.get('/add', getShowAddForm)
